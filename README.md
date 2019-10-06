@@ -17,6 +17,6 @@ It supports a modern, interactive frontend built using HTML, CSS and JavaScript,
 ** **
 
 Brought to you by:
-* Naveen K Murthy - PES2201800051
 * Roshan Daivajna - PES2201800372
+* Naveen K Murthy - PES2201800051
 * Tushar D - PES2201800352

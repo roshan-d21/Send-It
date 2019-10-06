@@ -1,0 +1,25 @@
+{
+  "name": "send-it",
+  "version": "1.0.0",
+  "description": "A fast, lightweight and secure instant messaging web application!",
+  "main": "server.js",
+  "scripts": {
+    "run": "npm server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naveenk2k/Send-It.git"
+  },
+  "author": "Roshan Daivajna, Naveen K Murthy, Tushar D Goankar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naveenk2k/Send-It/issues"
+  },
+  "homepage": "https://github.com/naveenk2k/Send-It#readme",
+  "dependencies": {
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
