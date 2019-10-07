@@ -1,0 +1,53 @@
+html, body {
+    color: #c4c4c7;
+    background: #1d1d24;
+}
+
+div.left {
+    text-align: left;
+    font-size: 18px;
+    padding: 1px 15px;
+}
+
+div.right {
+    text-align: right;
+    font-size: 18px;
+    padding: 1px 15px;
+}
+
+div.center {
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+    padding: 1px 15px;
+}
+
+#message-input, #message-input:focus, #message-input:active {
+    color: #c4c4c7;
+    width: 100%;
+    background: #30303d;
+    border-color: #30303d;
+    outline: none;
+    box-shadow: none;
+}
+
+#send-button {
+    width: 100%;
+    background: #0e5fb6;
+    border-color: #0e5fb6;
+    outline: none;
+    box-shadow: none;
+}
+
+#send-container {
+    margin-top: 10px;
+}
+
+div.row {
+    margin: 0px;
+    padding: 0px 5px;
+}
+
+div.col-10, div.col-2 {
+    padding: 0px 5px;
+}
