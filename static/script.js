@@ -12,8 +12,20 @@ const messageInput = document.getElementById('message-input');
  * A function to add a message to the user's screen (append to div tag)
  * @param {string} message Any text to be written to the div tag
  */
-const appendMessage = message => {
+
+const appendMessage = (message, position) => {
     const messageElement = document.createElement('div');
+    switch (position) {
+        case 'left':
+            messageElement.setAttribute('class', 'left');
+            break;
+        case 'right':
+            messageElement.setAttribute('class', 'right');
+            break;
+        case 'center':
+            messageElement.setAttribute('class', 'center');
+            break;
+    }
     messageElement.innerText = message;
     messageContainer.append(messageElement);
 };
@@ -21,20 +33,20 @@ const appendMessage = message => {
 // To get username from the user
 const name = prompt('What is your name?');
 // To display on your screen that you joined the chat room
-appendMessage('You joined');
+appendMessage('You joined', 'center');
 // To send this information to the server
 socket.emit('new-user', name);
 
 socket.on('chat-message', data => {
-    appendMessage(`${data.name}: ${data.message}`);
+    appendMessage(`${data.name}: ${data.message}`, 'left');
 });
 
 socket.on('user-connected', name => {
-    appendMessage(`${name} connected`);
+    appendMessage(`${name} connected`, 'center');
 });
 
 socket.on('user-disconnected', name => {
-    appendMessage(`${name} disconnected`);
+    appendMessage(`${name} disconnected`, 'center');
 });
 
 messageForm.addEventListener('submit', e => {
@@ -48,7 +60,7 @@ messageForm.addEventListener('submit', e => {
     socket.emit('send-chat-message', message);
 
     // Send what the user said to their own screen for display
-    appendMessage(`You: ${message}`);
+    appendMessage(`You: ${message}`, 'right');
 
     // Clearing the input field after a message is sent
     messageInput.value = '';
