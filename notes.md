@@ -45,4 +45,11 @@ Head to [localhost:3000](http://localhost:3000/) to see it running.
     const socket = io.connect(`http://localhost:NEWPORTNUMBER`);
     ```
 
-* We might **not** need to host the app on [netlify]() for everyone to access it. Read [this](https://stackoverflow.com/questions/9682262/how-do-i-connect-to-this-localhost-from-another-computer-on-the-same-network) StackOverflow answer for more information.
+* We might **not** need to host the app on [netlify]() for everyone to access it.
+
+
+    Read [this](https://stackoverflow.com/questions/9682262/how-do-i-connect-to-this-localhost-from-another-computer-on-the-same-network) StackOverflow answer for more information.
+
+    Also see [this](https://howchoo.com/g/mte2zgrhmjf/how-to-access-a-website-running-on-localhost-from-a-mobile-phone) for connecting directly from a mobile device.
+
+* When you add images and other resources to be used in ```index.html```, put them all inside the ```static``` folder.
