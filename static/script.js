@@ -1,6 +1,8 @@
 // For all client side JS
 
-const socket = io('http://localhost:3000');
+
+
+const socket = io.connect(`http://localhost:3000`);
 
 const messageContainer = document.getElementById('message-container');
 const messageForm = document.getElementById('send-container');

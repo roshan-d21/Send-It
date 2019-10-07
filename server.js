@@ -1,8 +1,22 @@
 // For all server side JS
 
-const io = require('socket.io')(3000);
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+require('dotenv').config();
+
 
 let users = {};
+
+
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.use("/static", express.static('./static/'));
+
 
 io.on('connection', socket => {
 
@@ -28,3 +42,8 @@ io.on('connection', socket => {
         console.log(users);
     })
 });
+
+const PORT = process.env.PORT || 5500;
+
+//! WARNING: app.listen(PORT) will NOT work here!
+server.listen(PORT);
