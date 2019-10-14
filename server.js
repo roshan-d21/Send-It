@@ -57,7 +57,8 @@ app.post('/login', function(req, res) {
     } else { 
         bcrypt.compare(req.body.pass, userdb[req.body.Username], function (err, same) {
             if (same === true) {
-                res.redirect('../');
+                // res.redirect('../');
+                res.render('index.ejs', {username : req.body.Username});
             } else {
                 res.redirect('../login');
             }
