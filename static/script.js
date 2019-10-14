@@ -15,18 +15,8 @@ const messageInput = document.getElementById('message-input');
 
 const appendMessage = (message, position) => {
     const messageElement = document.createElement('div');
-    switch (position) {
-        case 'left':
-            messageElement.setAttribute('class', 'left');
-            break;
-        case 'right':
-            messageElement.setAttribute('class', 'right');
-            break;
-        case 'center':
-            messageElement.setAttribute('class', 'center');
-            break;
-    }
     messageElement.innerText = message;
+    messageElement.setAttribute('class', position);
     messageContainer.append(messageElement);
 };
 

@@ -12,12 +12,20 @@ require('dotenv').config();
 
 let users = {};
 
+app.use("/static", express.static('./static/'));
+
+app.get('/signup', function(req, res) {
+    res.sendFile(__dirname + '/static/login/signup.html');
+});
+
+app.get('/login', function(req, res) {
+    res.sendFile(__dirname + '/static/login/login.html');
+});
+
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
-
-app.use("/static", express.static('./static/'));
 
 
 io.on('connection', socket => {
