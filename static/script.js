@@ -21,7 +21,8 @@ const appendMessage = (message, position) => {
 };
 
 // To get username from the user
-const name = prompt('What is your name?');
+// const name = prompt('What is your name?');
+const name = document.querySelector("data").getAttribute("val");
 // To display on your screen that you joined the chat room
 appendMessage('You joined', 'center');
 // To send this information to the server
