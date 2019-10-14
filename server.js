@@ -6,6 +6,9 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const fs = require('fs');
 
 require('dotenv').config();
 
@@ -14,17 +17,57 @@ let users = {};
 
 app.use("/static", express.static('./static/'));
 
+app.use(express.json());
+
+app.use(express.urlencoded({extended : true}));
+
 app.get('/signup', function(req, res) {
-    res.sendFile(__dirname + '/static/login/signup.html');
+    // res.sendFile(__dirname + '/static/login/signup.html');
+    res.render('signup.ejs');
 });
 
 app.get('/login', function(req, res) {
-    res.sendFile(__dirname + '/static/login/login.html');
+    // res.sendFile(__dirname + '/static/login/login.html');
+    res.render('login.ejs');
 });
 
+app.post('/signup', function(req, res) {
+    console.log(req.body.Username + ' ' + req.body.pass[1]);
+
+    let userdb = JSON.parse(fs.readFileSync('users.json'));
+
+    if (userdb[req.body.Username]) { //if username already exits, redirect to signup page
+        res.redirect('../signup');
+    } else { 
+        bcrypt.hash(req.body.pass[1], saltRounds, function (err, hash) {
+            userdb[req.body.Username] = hash;
+
+            fs.writeFileSync('users.json', JSON.stringify(userdb));
+
+            res.redirect('../login');        
+        });
+    }
+});
+
+app.post('/login', function(req, res) {
+    let userdb = JSON.parse(fs.readFileSync('users.json'));
+
+    if (userdb[req.body.Username] === undefined) { //if username doesn't exit, redirect to signup page
+        res.redirect('../signup');
+    } else { 
+        bcrypt.compare(req.body.pass, userdb[req.body.Username], function (err, same) {
+            if (same === true) {
+                res.redirect('../');
+            } else {
+                res.redirect('../login');
+            }
+        });
+    }
+});
 
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
+    // res.sendFile(__dirname + '/index.html');
+    res.render("index.ejs");
 });
 
 
