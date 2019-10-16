@@ -75,6 +75,7 @@ border-radius: 8px;
     color:grey;
     margin-left:10px;
     transition: all .4s;
+    position:relative;
 }
 .top-left-panel i:hover{
 
@@ -193,7 +194,7 @@ hr{
 .text-small-1{
     
     font-size:13px !important;
-    color:red!important;
+    color:darkolivegreen!important;
    
     
     
@@ -253,17 +254,22 @@ background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, F
 }
 .message-sender{
     
-    position: fixed;
-    top:580px;
+position: absolute;
+    top:520px;
 background: #ADA996;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     padding:10px 15px;
-    max-width:663px;
+    max-width:700px;
     border-radius: 9px;
     
     
+}
+
+.col-md-12{
+    
+    width:97.5%;
 }
 .message{
 background:#fafafa;
@@ -356,5 +362,22 @@ width:50px;
     color:white;
     text-align: center;
     filter: opacity(0.2);
+}
+.rotate{
+    transform: rotate(120deg);
+}
+
+.border-l{
+    border-left: 3px black;
+}
+svg:first-child{
+    margin-right:13px;
+    margin-top:10px;
+    
+}
+svg:last-child{
+     margin-top:10px;
+    
+    
 }
 
