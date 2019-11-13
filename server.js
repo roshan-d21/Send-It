@@ -12,7 +12,6 @@ const fs = require('fs');
 
 require('dotenv').config();
 
-
 let users = {};
 
 app.use("/static", express.static('./static/'));
@@ -38,13 +37,13 @@ app.post('/signup', function(req, res) {
 
     if (userdb[req.body.Username]) { //if username already exits, redirect to signup page
         res.redirect('../signup');
-    } else { 
+    } else {
         bcrypt.hash(req.body.pass[1], saltRounds, function (err, hash) {
             userdb[req.body.Username] = hash;
 
             fs.writeFileSync('users.json', JSON.stringify(userdb));
 
-            res.redirect('../login');        
+            res.redirect('../login');
         });
     }
 });
@@ -54,7 +53,7 @@ app.post('/login', function(req, res) {
 
     if (userdb[req.body.Username] === undefined) { //if username doesn't exit, redirect to signup page
         res.redirect('../signup');
-    } else { 
+    } else {
         bcrypt.compare(req.body.pass, userdb[req.body.Username], function (err, same) {
             if (same === true) {
                 // res.redirect('../');
