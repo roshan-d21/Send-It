@@ -273,6 +273,13 @@ ul li {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+ul li h5 {
+    font-weight: bold;
+    font-size: medium;
+    margin-top: 1px;
+    margin-bottom: 5px;
+}
+
 .left {
     background: #ECE9E6;
     /* fallback for old browsers */
@@ -284,6 +291,7 @@ ul li {
     float: left;
     margin-left: 10px;
     margin-top: 11px;
+    max-width: 75%;
 }
 
 .right {
@@ -298,6 +306,16 @@ ul li {
     color: #fff;
     margin-right: 10px;
     margin-top: 11px;
+    max-width: 75%;
+}
+
+.center {
+    font-size: small;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    width: 100%;
+    text-align: center;
+    color: rgb(133, 131, 131);
 }
 
 .left+.right {

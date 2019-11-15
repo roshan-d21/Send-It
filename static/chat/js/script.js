@@ -15,10 +15,16 @@ const messageInput = document.querySelector("body > div.container > div > div.co
  * A function to add a message to the user's screen (append to div tag)
  * @param {string} message Any text to be written to the div tag
  */
-const appendMessage = (message, position) => {
+const appendMessage = (name, message, position) => {
     const newListItem = document.createElement('li');
     newListItem.innerText = message;
     newListItem.setAttribute('class', position);
+    // Add name of the sender in the list element inside a h5 tag
+    if (position == 'left') {
+        const newListItemTitle = document.createElement('h5');
+        newListItemTitle.innerText = name;
+        newListItem.insertAdjacentElement('afterbegin', newListItemTitle);
+    }
     messageList.append(newListItem);
 }
 
@@ -27,21 +33,24 @@ const appendMessage = (message, position) => {
 const name = document.querySelector("data").getAttribute("val");
 
 // To display on your screen that you joined the chat room
-appendMessage('You joined', 'center');
+appendMessage('You', 'You joined', 'center');
 
 // To send this information to the server
 socket.emit('new-user', name);
 
 socket.on('chat-message', data => {
-    appendMessage(`${data.name}: ${data.message}`, 'left');
+    // appendMessage(`${data.name}: ${data.message}`, 'left');
+    appendMessage(data.name, data.message, 'left');
 });
 
 socket.on('user-connected', name => {
-    appendMessage(`${name} connected`, 'center');
+    // appendMessage(`${name} connected`, 'center');
+    appendMessage(name, `${name} connected`, 'center');
 });
 
 socket.on('user-disconnected', name => {
-    appendMessage(`${name} disconnected`, 'center');
+    // appendMessage(`${name} disconnected`, 'center');
+    appendMessage(name, `${name} disconnected`, 'center');
 });
 
 sendButton.addEventListener('click', e => {
@@ -54,7 +63,7 @@ sendButton.addEventListener('click', e => {
         socket.emit('send-chat-message', message);
 
         // Send what the user said to their own screen for display
-        appendMessage(message, 'right');
+        appendMessage('You', message, 'right');
 
         // Clear the input field after a message is sent
         messageInput.innerHTML = '';
