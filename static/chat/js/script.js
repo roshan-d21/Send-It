@@ -55,7 +55,6 @@ const name = document.querySelector("data").getAttribute("val");
 
 // To display on your screen that you joined the chat room
 appendMessage('You', 'You joined', 'center');
-appendUser(name);
 
 // To send this information to the server
 socket.emit('new-user', name);
@@ -76,12 +75,12 @@ socket.on('user-disconnected', name => {
     appendMessage(name, `${name} disconnected`, 'center');
 });
 
-// socket.on('get-user-list', users => {
-//     sideBar.innerHTML = "";
-//     for (const key in users) {
-//         appendUser(users[key]);      
-//     }
-// })
+socket.on('get-user-list', users => {
+    sideBar.innerHTML = "";
+    for (const key in users) {
+        appendUser(users[key]);      
+    }
+})
 
 sendButton.addEventListener('click', e => {
 
