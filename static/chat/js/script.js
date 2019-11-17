@@ -11,6 +11,8 @@ const sendButton = document.querySelector("body > div.container > div > div.col-
 
 const messageInput = document.querySelector("body > div.container > div > div.col-md-8.border-left.no-gutter-1 > div.col-md-12.message-sender.flex > div > div");
 
+const sideBar = document.querySelector("#user-list");
+
 /**
  * A function to add a message to the user's screen (append to div tag)
  * @param {string} message Any text to be written to the div tag
@@ -28,12 +30,32 @@ const appendMessage = (name, message, position) => {
     messageList.append(newListItem);
 }
 
+const appendUser = (name) => {
+    const newUserListItem = document.createElement('div');
+    newUserListItem.setAttribute("class", "contacts-drawer");
+
+    const newUserImage = document.createElement('img');
+    newUserImage.src = "../static/images/k2k.jpg";
+    newUserImage.alt = name[0].toUpperCase();
+    newUserImage.setAttribute('class', 'profile-pic');
+
+    const newUserData = document.createElement("div");
+    newUserData.setAttribute('class', 'text');
+    newUserData.innerHTML = `<h5>${name}</h5><p class="muted">...</p>`;
+
+    newUserListItem.append(newUserImage);
+    newUserListItem.append(newUserData);
+
+    console.log(newUserListItem);
+    sideBar.append(newUserListItem);
+}
 
 // To get username from the user's login
 const name = document.querySelector("data").getAttribute("val");
 
 // To display on your screen that you joined the chat room
 appendMessage('You', 'You joined', 'center');
+appendUser(name);
 
 // To send this information to the server
 socket.emit('new-user', name);
@@ -46,12 +68,20 @@ socket.on('chat-message', data => {
 socket.on('user-connected', name => {
     // appendMessage(`${name} connected`, 'center');
     appendMessage(name, `${name} connected`, 'center');
+    appendUser(name);
 });
 
 socket.on('user-disconnected', name => {
     // appendMessage(`${name} disconnected`, 'center');
     appendMessage(name, `${name} disconnected`, 'center');
 });
+
+// socket.on('get-user-list', users => {
+//     sideBar.innerHTML = "";
+//     for (const key in users) {
+//         appendUser(users[key]);      
+//     }
+// })
 
 sendButton.addEventListener('click', e => {
 
