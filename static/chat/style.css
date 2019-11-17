@@ -77,7 +77,7 @@ body {
     max-width: 990px;
     max-height: 468px;
     overflow: auto;
-
+    min-height: 468px;
 
 }
 

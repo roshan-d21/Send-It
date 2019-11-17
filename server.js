@@ -80,6 +80,9 @@ io.on('connection', socket => {
 
         // Emitting user's name to everyone else when a new user joins the room
         socket.broadcast.emit('user-connected', name);
+
+        // Emit list of all users to the new user
+        io.to(`${socket.id}`).emit('get-user-list', users);
     })
 
     // When a user sends a message by clicking on the submit button
@@ -92,6 +95,7 @@ io.on('connection', socket => {
         socket.broadcast.emit('user-disconnected', users[socket.id]);
         console.log(users);
         delete users[socket.id];
+        socket.broadcast.emit('get-user-list', users);
         console.log(users);
     })
 });
