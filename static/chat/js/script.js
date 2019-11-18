@@ -30,12 +30,23 @@ const appendMessage = (name, message, position) => {
     messageList.append(newListItem);
 }
 
+const generateAvatar = name => {
+    const queryString = "https://ui-avatars.com/api/?color=fff&background=09afe6";
+    const nameSplit = name.split(" ");
+    if (nameSplit.length == 1) {
+        return queryString + `&name=${name}` + "&length=1";
+    } else {
+        return queryString + `&name=${name.replace(' ', '+')}`;
+    }
+}
+
 const appendUser = (name) => {
     const newUserListItem = document.createElement('div');
     newUserListItem.setAttribute("class", "contacts-drawer");
 
     const newUserImage = document.createElement('img');
-    newUserImage.src = "../static/images/k2k.jpg";
+    // newUserImage.src = "../static/chat/images/k2k.jpg";
+    newUserImage.src = generateAvatar(name);
     newUserImage.alt = name[0].toUpperCase();
     newUserImage.setAttribute('class', 'profile-pic');
 
