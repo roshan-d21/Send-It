@@ -3,6 +3,7 @@
 
 
 const socket = io.connect(`http://localhost:3000`);
+// const socket = io.connect(`http://192.168.43.141:3000`);
 
 // const messageContainer = document.getElementById('message-container');
 const messageList = document.getElementById('message-list');
