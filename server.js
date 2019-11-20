@@ -66,8 +66,8 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-    // res.sendFile(__dirname + '/index.html');
-    res.render("index.ejs");
+    res.sendFile(__dirname + '/views/home.html');
+    // res.render("index.ejs");
 });
 
 
@@ -104,3 +104,4 @@ const PORT = process.env.PORT || 5500;
 
 //! WARNING: app.listen(PORT) will NOT work here!
 server.listen(PORT);
+// server.listen(3000, "192.168.43.141");
