@@ -14,6 +14,8 @@ const messageInput = document.querySelector("body > div.container > div > div.co
 
 const sideBar = document.querySelector("#user-list");
 
+const topLeftUserImage = document.querySelector('body > div.container > div > div.col-md-4.no-gutter > div.top-left-panel.left-panel-01 > img');
+
 /**
  * A function to add a message to the user's screen (append to div tag)
  * @param {string} message Any text to be written to the div tag
@@ -67,6 +69,7 @@ const name = document.querySelector("data").getAttribute("val");
 
 // To display on your screen that you joined the chat room
 appendMessage('You', 'You joined', 'center');
+topLeftUserImage.src = generateAvatar(name);
 
 // To send this information to the server
 socket.emit('new-user', name);
