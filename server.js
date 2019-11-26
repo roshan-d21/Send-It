@@ -70,9 +70,9 @@ app.get('/', function(req, res) {
     // res.render("index.ejs");
 });
 
-// app.get('*', function(req, res) {
-//     res.redirect('./');
-// });
+app.get('*', function(req, res) {
+    res.redirect('/');
+});
 
 io.on('connection', socket => {
 

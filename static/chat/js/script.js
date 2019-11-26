@@ -143,3 +143,9 @@ $(emojiButton).click(function(e) {
     });
     $(messageInput).emojiPicker('toggle');
 });
+
+document.querySelector('svg.logout').addEventListener('click', () => {
+    if (confirm("Are you sure you want to logout?")) {
+        window.open(location,'_self').close();
+    }
+});
