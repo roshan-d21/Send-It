@@ -280,6 +280,15 @@ ul li h5 {
     margin-bottom: 5px;
 }
 
+ul li.right a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+ul li.left a {
+    text-decoration: underline;
+}
+
 .left {
     background: #ECE9E6;
     /* fallback for old browsers */
