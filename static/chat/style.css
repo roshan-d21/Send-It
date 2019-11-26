@@ -463,7 +463,7 @@ svg:last-child {
     cursor: pointer;
 }
 
-div.edit {
+textarea.edit {
     position: relative;
     left: 3px;
     right: 50px;
@@ -478,7 +478,7 @@ div.edit {
     color: var(--textbox-color);
 }
 
-div.edit:focus {
+textarea.edit:focus {
     outline: none;
     border: 0.4px solid #01FF70;
 }

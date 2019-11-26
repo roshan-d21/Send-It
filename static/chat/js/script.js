@@ -7,14 +7,19 @@ const socket = io.connect(`http://localhost:3000`);
 
 // const messageContainer = document.getElementById('message-container');
 const messageList = document.getElementById('message-list');
+
+const messageDiv = document.querySelector("body > div.container > div > div.col-md-8.border-left.no-gutter-1 > div.chat-box");
+
 // const messageForm = document.getElementById('send-container');
 const sendButton = document.querySelector("body > div.container > div > div.col-md-8.border-left.no-gutter-1 > div.col-md-12.message-sender.flex > i:nth-child(3)");
 
-const messageInput = document.querySelector("body > div.container > div > div.col-md-8.border-left.no-gutter-1 > div.col-md-12.message-sender.flex > div > div");
+const messageInput = document.querySelector("#message");
 
 const sideBar = document.querySelector("#user-list");
 
 const topLeftUserImage = document.querySelector('body > div.container > div > div.col-md-4.no-gutter > div.top-left-panel.left-panel-01 > img');
+
+const emojiButton = document.querySelector("body > div.container > div > div.col-md-8.border-left.no-gutter-1 > div.col-md-12.message-sender.flex > i.material-icons.picker");
 
 /**
  * A function to add a message to the user's screen (append to div tag)
@@ -31,6 +36,8 @@ const appendMessage = (name, message, position) => {
         newListItem.insertAdjacentElement('afterbegin', newListItemTitle);
     }
     messageList.append(newListItem);
+    // if (messageDiv)
+    //     messageDiv.scrollTop = messageDiv.scrollHeight;
 }
 
 const generateAvatar = name => {
@@ -60,7 +67,7 @@ const appendUser = (name) => {
     newUserListItem.append(newUserImage);
     newUserListItem.append(newUserData);
 
-    console.log(newUserListItem);
+    // console.log(newUserListItem);
     sideBar.append(newUserListItem);
 }
 
@@ -93,14 +100,14 @@ socket.on('user-disconnected', name => {
 socket.on('get-user-list', users => {
     sideBar.innerHTML = "";
     for (const key in users) {
-        appendUser(users[key]);      
+        appendUser(users[key]);
     }
 })
 
-sendButton.addEventListener('click', e => {
+const sendMessage = e => {
 
     // Get the message from the input field
-    const message = messageInput.innerHTML;
+    const message = messageInput.value;
 
     if (message) {
         // Send the message to the server
@@ -110,6 +117,29 @@ sendButton.addEventListener('click', e => {
         appendMessage('You', message, 'right');
 
         // Clear the input field after a message is sent
-        messageInput.innerHTML = '';
+        messageInput.value = '';
     }
+};
+
+sendButton.addEventListener('click', sendMessage);
+$(messageInput).on("keypress", function(e) {
+    var key = e.keyCode;
+
+    // If the user has pressed enter
+    if (key == 13 && !e.shiftKey) {
+        sendMessage();
+        return false;
+    } else {
+        return true;
+    }
+});
+
+$(emojiButton).click(function(e) {
+    e.preventDefault();
+    $(messageInput).emojiPicker({
+        width: '300px',
+        height: '200px',
+        button: false
+    });
+    $(messageInput).emojiPicker('toggle');
 });

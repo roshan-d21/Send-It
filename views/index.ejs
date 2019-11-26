@@ -17,6 +17,14 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap" rel="stylesheet">
 
+      <link rel="stylesheet" type="text/css" href="static/chat/emojis/css/jquery.emojipicker.css">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+      <script type="text/javascript" src="static/chat/emojis/js/jquery.emojipicker.js"></script>
+
+      <!-- Emoji Data -->
+      <link rel="stylesheet" type="text/css" href="static/chat/emojis/css/jquery.emojipicker.tw.css">
+      <script type="text/javascript" src="static/chat/emojis/js/jquery.emojis.js"></script>
+
     <data val="<%= username %>"></data>
     <script src="/socket.io/socket.io.js"></script>
     <script defer src="../static/chat/js/script.js"></script>
@@ -63,7 +71,7 @@
                     </div>
                 </div>
                 <div data-simplebar class="over-scroll" id="user-list">
-                    
+
 
 
                 </div>
@@ -101,7 +109,6 @@
                 <div data-simplebar class="chat-box">
 
                     <ul id="message-list">
-                        
 
                     </ul>
                 </div>
@@ -110,10 +117,7 @@
 
                     <i class="material-icons picker">emoji_emotions</i>
                     <div class="message">
-
-
-                        <div contenteditable="true" class="edit"></div>
-
+                        <textarea id="message" class="edit"></textarea>
                     </div>
                     <i class="material-icons">send</i>
                     <span class="just-right"><i class="material-icons rotate">attachment</i></span>
