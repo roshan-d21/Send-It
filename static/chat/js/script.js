@@ -27,7 +27,7 @@ const emojiButton = document.querySelector("body > div.container > div > div.col
  */
 const appendMessage = (name, message, position) => {
     const newListItem = document.createElement('li');
-    newListItem.innerText = message;
+    newListItem.innerHTML = message;
     newListItem.setAttribute('class', position);
     // Add name of the sender in the list element inside a h5 tag
     if (position == 'left') {
@@ -148,4 +148,11 @@ document.querySelector('svg.logout').addEventListener('click', () => {
     if (confirm("Are you sure you want to logout?")) {
         window.open(location,'_self').close();
     }
+});
+
+document.querySelector('#location').addEventListener('click', () => {
+    const mapString = `<a href="https://www.google.com/maps/@12.8613835,77.6632812,17z" target="_blank">My Location</a>`;
+
+    socket.emit('send-chat-message', mapString);
+    appendMessage(name, mapString, 'right');
 });
