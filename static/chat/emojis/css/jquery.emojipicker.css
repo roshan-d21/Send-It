@@ -1,3 +1,23 @@
+
+.emojiPicker{
+    width: 300px;
+    height: 200px;
+    z-index: 10000;
+    top:340px !important;
+    left:600px !important;
+    display: block;
+}
+.emojiPicker .sections,.emojiPicker nav,.emojiPicker section.search input{
+    background:none !important;
+}
+.emojiPicker .shortcode{
+    background:rgb(48,49,51) !important;}
+.emojiPicker nav div.tab{
+    background:none !important;
+    border:none !important;
+    box-shadow: none !important;
+}
+
 .emojiPickerIconWrap {display:inline-block; position:relative;}
 .emojiPickerIcon {position:absolute; top:0; right:0; cursor:pointer; }
 

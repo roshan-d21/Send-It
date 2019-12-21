@@ -21,6 +21,12 @@ const topLeftUserImage = document.querySelector('body > div.container > div > di
 
 const emojiButton = document.querySelector("body > div.container > div > div.col-md-8.border-left.no-gutter-1 > div.col-md-12.message-sender.flex > i.material-icons.picker");
 
+var time=function(){
+    var currentdate = new Date();
+var datetime = "You Joined at " + 
++ currentdate.getHours() + ":" 
++ currentdate.getMinutes() + ":" + currentdate.getSeconds();
+    return datetime;}
 /**
  * A function to add a message to the user's screen (append to div tag)
  * @param {string} message Any text to be written to the div tag
@@ -62,7 +68,7 @@ const appendUser = (name) => {
 
     const newUserData = document.createElement("div");
     newUserData.setAttribute('class', 'text');
-    newUserData.innerHTML = `<h5>${name}</h5><p class="muted">...</p>`;
+    newUserData.innerHTML = `<h5>${name}</h5><p class="muted"></p>`;
 
     newUserListItem.append(newUserImage);
     newUserListItem.append(newUserData);
@@ -143,6 +149,8 @@ $(emojiButton).click(function(e) {
     });
     $(messageInput).emojiPicker('toggle');
 });
+const time1 = document.querySelector(".time");
+time1.innerHTML=time();
 
 document.querySelector('svg.logout').addEventListener('click', () => {
     if (confirm("Are you sure you want to logout?")) {
@@ -151,7 +159,7 @@ document.querySelector('svg.logout').addEventListener('click', () => {
 });
 
 document.querySelector('#location').addEventListener('click', () => {
-    const mapString = `<a href="https://www.google.com/maps/@12.8613835,77.6632812,17z" target="_blank">My Location</a>`;
+    const mapString = `<a href="https://maps.google.com/maps?q=loc:12.8614358,77.6647336&z=17" target="_blank">My Location</a>`;
 
     socket.emit('send-chat-message', mapString);
     appendMessage(name, mapString, 'right');
