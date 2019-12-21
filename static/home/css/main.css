@@ -74,6 +74,7 @@ ul.navbar-nav > li > a:focus {
 .color-nav {
     background: #dba51a;
 
+    
     padding: 7px 0;
     box-shadow: 0 8px 6px -9px #999;
     z-index: 2;
