@@ -53,3 +53,13 @@ Head to [localhost:3000](http://localhost:3000/) to see it running.
     Also see [this](https://howchoo.com/g/mte2zgrhmjf/how-to-access-a-website-running-on-localhost-from-a-mobile-phone) for connecting directly from a mobile device.
 
 * When you add images and other resources to be used in ```index.html```, put them all inside the ```static``` folder.
+
+# Suggested Changes to static/main.html
+* Flip the 'Attach a file' icon to be vertical
+* Remove the blinking green and yellow light. Instead make a placeholder for a green light for each contact in the left pane (not blinking). Will toggle this on/off later using JS.
+* Different icon for 'Settings'
+* Make the logo at the bottom be a hyperlink to 'https://github.com/naveenk2k/Send-It'
+* Make textbox wrap if the user enters more text. Increase its size, similar to what happens on mobile devices (Whatsapp, Telegram)
+* Change font colour of 'Last seen ...' to be more muted
+* Add separation between left pane and chat window (line?)
+*  Align all icons in the chat window vertically (send button, attach file button, etc.)
